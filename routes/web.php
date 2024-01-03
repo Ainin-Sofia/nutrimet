@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StatusGiziController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/status_gizi', [StatusGiziController::class, 'index']);
+
+Route::get('/register', [AuthController::class, 'getRegister']);
+Route::get('/login', [AuthController::class, 'getLogin']);
