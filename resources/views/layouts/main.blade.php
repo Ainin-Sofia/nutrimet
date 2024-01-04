@@ -31,6 +31,10 @@
 <body class="font-montserrat">
     @yield('contents')
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        import Swal from 'sweetalert2';
+    </script>
     @yield('scripts')
 </body>
 </html>

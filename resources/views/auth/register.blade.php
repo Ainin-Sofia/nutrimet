@@ -25,8 +25,8 @@
                 <label for="jenis_kelamin" class="block mb-2 text-base font-medium text-gray-900">Jenis Kelamin</label>
                 <select id="jenis_kelamin" name="jenis_kelamin" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                     <option value="" disabled selected hidden>Apa jenis kelamin kamu...</option>
-                    <option value="laki-laki">Laki-Laki</option>
-                    <option value="perempuan">Perempuan</option>
+                    <option value="Laki-Laki">Laki-Laki</option>
+                    <option value="Perempuan">Perempuan</option>
                 </select>
             </div>
 

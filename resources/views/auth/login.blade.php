@@ -31,3 +31,34 @@
     </div>
 </body>
 @endsection
+
+@if(session('status'))
+    @section('scripts')
+        <script>
+            let timerInterval;
+
+            Swal.fire({
+                title: "Sukses!",
+                icon: "success",
+                html: "Selamat, akun kamu berhasil dibuat!",
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.hideLoading();
+                    const timer = Swal.getPopup().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        timer.textContent = `${Swal.getTimerLeft()}`;
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("Alert ditutup.");
+                }
+            });
+        </script>
+    @endsection
+@endif
