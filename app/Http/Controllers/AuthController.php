@@ -25,7 +25,7 @@ class AuthController extends Controller
             return redirect()->intended('/home')->with('login', "Sukses melakukan login!");
         }
 
-        return back()->with('failed', "Gagal melakukan login!");
+        return back()->with('failed', "Gagal melakukan login!")->withInput();
     }
 
     function getRegister() {

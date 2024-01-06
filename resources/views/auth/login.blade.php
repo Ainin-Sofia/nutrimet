@@ -13,7 +13,7 @@
 
             <div class="mb-3">
                 <label for="email" class="block mb-2 text-base font-medium text-gray-900">Alamat Email</label>
-                <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Apa alamat email kamu..." required>
+                <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Apa alamat email kamu..." value="{{ old('email') }}" required>
             </div>
 
             <div class="mb-5">
@@ -22,8 +22,8 @@
             </div>
 
             <div class="mb-5 text-center">
-                <a href="/" class="underline mr-11">Kembali ke halaman utama</a>
-                <a href="/lupapassword" class="underline ml-11">Lupa Password?</a>
+                <a href="/" class="underline mr-3 text-sm sm:text-base md:text-base lg:text-base xl:text-base xl:mr-11">Kembali ke halaman utama</a>
+                <a href="/lupapassword" class="underline ml-3 text-sm sm:text-base md:text-base lg:text-base xl:text-base xl:ml-11">Lupa Password?</a>
             </div>
 
             <button type="submit" class="block mx-auto w-full py-3 bg-primary3 text-white font-bold text-xl rounded-xl">Masuk</button>

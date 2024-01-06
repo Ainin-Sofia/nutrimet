@@ -5,7 +5,7 @@
         </a>
         <div class="flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">
             <button type="button" data-dropdown-toggle="language-dropdown-menu" class="inline-flex items-center font-bold justify-center px-4 py-2 text-sm rounded-lg cursor-pointer hover:bg-gray-100" onclick="toggleUser();">
-                Nanda Dwi Cahyo Wibowo
+                {{ auth()->user()->nama_lengkap }}
                 <img src="https://th.bing.com/th/id/R.c3631c652abe1185b1874da24af0b7c7?rik=XBP%2fc%2fsPy7r3HQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-user-icon-circled-user-icon-2240.png&ehk=z4ciEVsNoCZtWiFvQQ0k4C3KTQ6wt%2biSysxPKZHGrCc%3d&risl=&pid=ImgRaw&r=0" alt="User Icon" class="w-6 mx-3">
             </button>
             <!-- Dropdown -->
@@ -19,7 +19,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                        <a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
                             <div class="inline-flex items-center">         
                                 Logout
                             </div>
