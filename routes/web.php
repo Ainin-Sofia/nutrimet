@@ -25,5 +25,7 @@ Route::get('/status_gizi', [StatusGiziController::class, 'index']);
 Route::get('/register', [AuthController::class, 'getRegister']);
 Route::post('/register', [AuthController::class, 'postRegister']);
 Route::get('/login', [AuthController::class, 'getLogin']);
+Route::post('/login', [AuthController::class, 'postLogin']);
+Route::get('/logout', [AuthController::class, 'getLogout']);
 
 Route::get('home', [HomeController::class, 'index']);

@@ -61,4 +61,33 @@
             });
         </script>
     @endsection
+@elseif(session('failed'))
+    @section('scripts')
+        <script>
+            let timerInterval2;
+
+            Swal.fire({
+                title: "Gagal!",
+                icon: "error",
+                html: "Login gagal, email atau password salah!",
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.hideLoading();
+                    const timer = Swal.getPopup().querySelector("b");
+                    timerInterval2 = setInterval(() => {
+                        timer.textContent = `${Swal.getTimerLeft()}`;
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval2);
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("Alert ditutup.");
+                }
+            });
+        </script>
+    @endsection
 @endif

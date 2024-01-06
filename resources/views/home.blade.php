@@ -70,18 +70,47 @@
             </table>
         </div>
     </div>
+
+    <script>
+        function toggleNav() {
+            var element = document.getElementById("navbar");
+            element.classList.toggle("hidden");
+        }
+
+        function toggleUser() {
+            var element = document.getElementById("user-menu");
+            element.classList.toggle("hidden");
+        }
+    </script>
 @endsection
 
-@section('scripts')
-<script>
-    function toggleNav() {
-        var element = document.getElementById("navbar");
-        element.classList.toggle("hidden");
-    }
+@if(session('login'))
+    @section('scripts')
+        <script>
+            let timerInterval;
 
-    function toggleUser() {
-        var element = document.getElementById("user-menu");
-        element.classList.toggle("hidden");
-    }
-</script>
-@endsection
+            Swal.fire({
+                title: "Sukses!",
+                icon: "success",
+                html: "Kamu berhasil login, Selamat datang!",
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.hideLoading();
+                    const timer = Swal.getPopup().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        timer.textContent = `${Swal.getTimerLeft()}`;
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("Alert ditutup.");
+                }
+            });
+        </script>
+    @endsection
+@endif
