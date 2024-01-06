@@ -18,14 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->middleware('guest');
 
-Route::get('/status_gizi', [StatusGiziController::class, 'index']);
+Route::get('/status_gizi', [StatusGiziController::class, 'index'])->middleware('auth');
 
-Route::get('/register', [AuthController::class, 'getRegister']);
+Route::get('/register', [AuthController::class, 'getRegister'])->middleware('guest');
 Route::post('/register', [AuthController::class, 'postRegister']);
-Route::get('/login', [AuthController::class, 'getLogin']);
+Route::get('/login', [AuthController::class, 'getLogin'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'postLogin']);
-Route::get('/logout', [AuthController::class, 'getLogout']);
+Route::get('/logout', [AuthController::class, 'getLogout'])->middleware('auth');
 
-Route::get('home', [HomeController::class, 'index']);
+Route::get('home', [HomeController::class, 'index'])->middleware('auth');
