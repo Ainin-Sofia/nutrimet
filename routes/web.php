@@ -27,5 +27,8 @@ Route::post('/register', [AuthController::class, 'postRegister']);
 Route::get('/login', [AuthController::class, 'getLogin'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'postLogin']);
 Route::get('/logout', [AuthController::class, 'getLogout'])->middleware('auth');
+Route::get('/lupa_password', [AuthController::class, 'getLupaPassword'])->middleware('guest');
+Route::post('/lupa_password', [AuthController::class, 'postLupaPassword']);
+Route::post('/password_baru', [AuthController::class, 'passwordBaru']);
 
 Route::get('home', [HomeController::class, 'index'])->middleware('auth');

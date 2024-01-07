@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -54,5 +56,26 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
  
         return redirect('/');
+    }
+
+    function getLupaPassword() {
+        return view('auth.lupa_password');
+    }
+
+    function postLupaPassword(Request $request) {
+        $user_check = User::where('email', '=', $request->email)->where('tanggal_lahir', '=', $request->tanggal_lahir)->get();
+        
+        if ($user_check == "[]") {
+            return redirect()->back()->with('no_user', "User tidak ditemukan!");
+        } else {
+            return view('auth.password_baru', ['user_check' => $user_check]);   
+        }
+        
+    }
+
+    function passwordBaru(Request $request): RedirectResponse {
+        $user = DB::table('users')->where('email', $request->email)->update(['password' => Hash::make($request->password)]);
+
+        return redirect('/login')->with('status', "Berhasil merubah password!");
     }
 }

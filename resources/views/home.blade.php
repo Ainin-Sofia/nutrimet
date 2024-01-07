@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="flex flex-wrap justify-center lg:justify-around xl:justify-around">
+    <div class="flex flex-wrap justify-center lg:justify-around xl:justify-around mb-5">
         <div>
             <table class="table-auto">
                 <thead>
