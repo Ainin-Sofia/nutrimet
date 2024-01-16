@@ -21,7 +21,8 @@
                         primary2: '#D43955',
                         primary3: '#CC1133',
                         primary4: '#AA0E2A',
-                        primary5: '#880B22'
+                        primary5: '#880B22',
+                        success: '#00FF00'
                     }
                 }
             }

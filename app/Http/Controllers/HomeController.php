@@ -20,4 +20,8 @@ class HomeController extends Controller
 
         return view('home');
     }
+
+    function cekStatusGizi() {
+        return view('status_gizi');
+    }
 }

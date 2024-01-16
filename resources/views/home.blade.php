@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('title', 'NUtrimet | Beranda')
+@section('beranda', 'font-bold')
 
 @section('contents')
     @include('layouts.nav')
@@ -10,10 +11,10 @@
             <img class="w-3/5 max-[420px]:w-1/2 max-[420px]:mx-auto" src="{{ asset('/img/ilustrasi-home.png') }}" alt="img home">
         </div>
         <div class="flex-auto xl:w-1/2">
-            <h1 class="max-[420px]:text-xl xl:text-4xl font-bold mb-5">Selamat Datang, {{ auth()->user()->nama_lengkap }}!</h1>
+            <h1 class="max-[420px]:text-xl xl:text-4xl font-bold mb-5">Selamat Datang, {{ auth()->user()->nama }}!</h1>
             <p class="max-[420px]:text-sm xl:text-base font-medium mb-7">Yuk cek status gizi kamu disini. Kamu juga bisa cek status pre-metabolic syndrom (PMS) juga lo.</p>
-            <a class="px-6 py-3 bg-primary3 hover:bg-primary5 text-white font-bold max-[420px]:text-sm xl:text-xl rounded-xl mr-5 max-[420px]:mr-1" href="/login">Cek Status Gizi</a>
-            <a class="px-6 py-3 outline outline-3 hover:outline-none hover:bg-primary3 text-primary3 hover:text-white font-bold max-[420px]:text-sm xl:text-xl rounded-xl" href="/register">Cek Status PMS</a>
+            <a class="px-6 py-3 bg-primary3 hover:bg-primary5 text-white font-bold max-[420px]:text-sm xl:text-xl rounded-xl mr-5 max-[420px]:mr-1" href="/cek_status_gizi">Cek Status Gizi</a>
+            <a class="px-6 py-3 outline outline-3 hover:outline-none hover:bg-primary3 text-primary3 hover:text-white font-bold max-[420px]:text-sm xl:text-xl rounded-xl" href="/cek_pms">Cek Status PMS</a>
         </div>
     </div>
 

@@ -32,3 +32,4 @@ Route::post('/lupa_password', [AuthController::class, 'postLupaPassword']);
 Route::post('/password_baru', [AuthController::class, 'passwordBaru']);
 
 Route::get('home', [HomeController::class, 'index'])->middleware('auth');
+Route::get('/cek_status_gizi', [HomeController::class, 'cekStatusGizi'])->middleware('auth');
