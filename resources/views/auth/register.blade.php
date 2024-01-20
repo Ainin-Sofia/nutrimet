@@ -13,12 +13,15 @@
 
             <div class="mb-3">
                 <label for="nama_lengkap" class="block mb-2 text-base font-medium text-gray-900">Nama Lengkap</label>
-                <input type="text" id="nama_lengkap" name="nama_lengkap" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Siapa nama lengkap kamu..." required>
+                <input type="text" id="nama_lengkap" name="nama_lengkap" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Siapa nama lengkap kamu..." required value="{{ old('nama_lengkap') }}">
             </div>
 
             <div class="mb-3">
                 <label for="email" class="block mb-2 text-base font-medium text-gray-900">Alamat Email</label>
-                <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Apa alamat email kamu..." required>
+                <input type="email" id="email" name="email" class="bg-gray-50 border @error('email') border-primary3 @enderror border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Apa alamat email kamu..." required value="{{ old('email') }}">
+                @error('email')
+                    <p class="text-primary3 text-xs mt-1">Email sudah pernah digunakan.</p>
+                @enderror
             </div>
 
             <div class="mb-3">
@@ -32,7 +35,8 @@
 
             <div class="mb-3">
                 <label for="tanggal_lahir" class="block mb-2 text-base font-medium text-gray-900">Tanggal Lahir</label>
-                <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Kapan tanggal lahir kamu..." required>
+                <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Kapan tanggal lahir kamu..." required value="{{ old('tanggal_lahir') }}">
+                <p class="text-gray-500 text-xs mt-1">Pastikan kamu berusia antara 10 sampai 18 tahun.</p>
             </div>
 
             <div class="mb-5">
@@ -49,3 +53,34 @@
     </div>
 </body>
 @endsection
+
+@if(session('status'))
+    @section('scripts')
+        <script>
+            let timerInterval;
+
+            Swal.fire({
+                title: "Gagal!",
+                icon: "error",
+                html: "Akun kamu tidak dapat dibuat karena jarak usia 10 - 18 tahun.",
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.hideLoading();
+                    const timer = Swal.getPopup().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        timer.textContent = `${Swal.getTimerLeft()}`;
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("Alert ditutup.");
+                }
+            });
+        </script>
+    @endsection
+@endif

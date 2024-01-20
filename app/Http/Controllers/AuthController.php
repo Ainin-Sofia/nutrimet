@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use DateTime;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,18 +36,35 @@ class AuthController extends Controller
     }
 
     function postRegister(Request $request): RedirectResponse {
-        $user = new User;
+        $request->validate([
+            'email' => 'required|unique:users'
+        ]);
+        
+        $tanggal_lahir = new DateTime($request->tanggal_lahir);
+        $sekarang = new DateTime("today");
+
+        if ($tanggal_lahir > $sekarang) { 
+            $thn = "0";
+        }
+
+        $thn = $sekarang->diff($tanggal_lahir)->y;
+
+        if ($thn >= 10 && $thn <= 18) {
+            $user = new User;
  
-        $user->nama = $request->nama_lengkap;
-        $user->email = $request->email;
-        $user->jenis_kelamin = $request->jenis_kelamin;
-        $user->tanggal_lahir = $request->tanggal_lahir;
-        $user->password = $request->password;
-        $user->gambar = "gambar.png";
+            $user->nama = $request->nama_lengkap;
+            $user->email = $request->email;
+            $user->jenis_kelamin = $request->jenis_kelamin;
+            $user->tanggal_lahir = $request->tanggal_lahir;
+            $user->password = $request->password;
+            $user->gambar = "gambar.png";
  
-        $user->save();
- 
-        return redirect('/login')->with('status', "Akun Berhasil Dibuat!");
+            $user->save();
+
+            return redirect('/login')->with('status', "Akun Berhasil Dibuat!");
+        } else {
+            return redirect('/register')->with('status', "Akun Gagal Dibuat!")->withInput();
+        }
     }
 
     function getLogout(Request $request): RedirectResponse {
