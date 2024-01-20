@@ -31,7 +31,7 @@ class StatusGizi extends Component
         
         date_default_timezone_set('Asia/Jakarta');
 
-        $imt = $this->berat_badan / ($this->tinggi_badan / 100);
+        $imt = $this->berat_badan / pow(($this->tinggi_badan / 100), 2);
 
         if (Auth::user()->jenis_kelamin == "Laki-Laki") {
             $getByAge = StandartIMTL::where('umur_tahun', '=', $this->thn)->where('umur_bulan', '=', $this->bln)->get();
@@ -40,11 +40,9 @@ class StatusGizi extends Component
         }
 
         if ($imt < $getByAge[0]["median"]) {
-            $z_score = $imt - $getByAge[0]["median"] / $getByAge[0]["median"] - $getByAge[0]["min_satu_sd"];
-            $z_score = round($z_score);
+            $z_score = ($imt - $getByAge[0]["median"]) / ($getByAge[0]["median"] - $getByAge[0]["min_satu_sd"]);
         } else {
-            $z_score = $imt - $getByAge[0]["median"] / $getByAge[0]["plus_satu_sd"] - $getByAge[0]["median"];
-            $z_score = round($z_score);
+            $z_score = ($imt - $getByAge[0]["median"]) / ($getByAge[0]["plus_satu_sd"] - $getByAge[0]["median"]);
         }
 
         if ($z_score >= -3.0 && $z_score < -2.0) {

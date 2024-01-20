@@ -37,7 +37,7 @@
                         </tr>
                         <tr>
                             <td  class="pr-10 py-1 text-xl">Tinggi Badan:</td>
-                            <th class="text-xl">@if(session('afterCek')) {{ $cek_result->tinggi_badan }} @endif</th>
+                            <th class="text-xl">@if(session('afterCek')) {{ $cek_result->tinggi_badan  }} @endif</th>
                         </tr>
                         <tr>
                             <td  class="pr-10 py-1 text-xl">Berat Badan:</td>
