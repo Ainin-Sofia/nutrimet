@@ -12,7 +12,9 @@ class StatusGizi extends Model
 
     protected $table = 'status_gizi';
 
+    protected $fillable = ['user_id', 'tanggal_cek', 'tinggi_badan', 'berat_badan', 'imt', 'hasil_status_gizi', 'z_score'];
+
     public function user(): BelongsTo {
-        return $this->belongsTo(User::class, 'foreign_key', 'user_id');
+        return $this->belongsTo(User::class, 'foreign_key', '   user_id');
     }
 }

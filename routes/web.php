@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\StatusGiziController;
+use App\Livewire\StatusGizi;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +20,6 @@ Route::get('/', function () {
     return view('index');
 })->middleware('guest');
 
-Route::get('/status_gizi', [StatusGiziController::class, 'index'])->middleware('auth');
-
 Route::get('/register', [AuthController::class, 'getRegister'])->middleware('guest');
 Route::post('/register', [AuthController::class, 'postRegister']);
 Route::get('/login', [AuthController::class, 'getLogin'])->name('login')->middleware('guest');
@@ -32,4 +30,4 @@ Route::post('/lupa_password', [AuthController::class, 'postLupaPassword']);
 Route::post('/password_baru', [AuthController::class, 'passwordBaru']);
 
 Route::get('home', [HomeController::class, 'index'])->middleware('auth');
-Route::get('/cek_status_gizi', [HomeController::class, 'cekStatusGizi'])->middleware('auth');
+Route::get('/cek_status_gizi', StatusGizi::class)->middleware('auth');
