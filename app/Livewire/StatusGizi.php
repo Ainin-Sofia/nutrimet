@@ -45,7 +45,9 @@ class StatusGizi extends Component
             $z_score = ($imt - $getByAge[0]["median"]) / ($getByAge[0]["plus_satu_sd"] - $getByAge[0]["median"]);
         }
 
-        if ($z_score >= -3.0 && $z_score < -2.0) {
+        if ($z_score < -3.0) {
+            $gizi = "Gizi Kurang (thinnnes)";
+        } else if ($z_score >= -3.0 && $z_score < -2.0) {
             $gizi = "Gizi Kurang (thinnnes)";
         } else if ($z_score >= -2.0 && $z_score < 1.0) {
             $gizi = "Gizi Baik (normal)";
