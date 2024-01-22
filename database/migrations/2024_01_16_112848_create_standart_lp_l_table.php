@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('standart_lp_l', function (Blueprint $table) {
             $table->id();
             $table->integer("umur_tahun");
-            $table->integer("lingkar_pinggang");
-            $table->timestamps();
+            $table->float("lingkar_pinggang");
         });
     }
 

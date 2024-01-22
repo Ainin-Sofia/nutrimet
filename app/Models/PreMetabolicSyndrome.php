@@ -12,7 +12,10 @@ class PreMetabolicSyndrome extends Model
 
     protected $table = 'pre_metabolic_syndrome';
 
-    public function user(): BelongsTo {
+    protected $fillable = ['user_id', 'tanggal_cek', 'sistole', 'diastole', 'lingkar_pinggang', 'gula_darah', 'hdl', 'trigliserida', 'hasil_pms'];
+
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class, 'foreign_key', 'user_id');
     }
 }
