@@ -20,27 +20,8 @@
 
     <div class="flex flex-wrap justify-center lg:justify-around xl:justify-around mb-5">
         <div>
-            <table class="table-auto">
-                <thead>
-                    <tr>
-                        <th class="py-5 text-xl text-left border-b-4 border-primary3" colspan="2">Riwayat Cek Status Gizi dalam 5 cek terakhir</th>
-                    </tr>
-                    <tr>
-                        <th class="p-3 text-left border-b-2 border-t border-slate-600">Tanggal Periksa</th>
-                        <th class="p-3 text-left border-b-2 border-t border-slate-600">Hasil Cek Status Gizi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="p-2 text-left border-t border-b border-slate-600">06 Januari 2024</td>
-                        <td class="p-2 text-left border-t border-b border-slate-600">Gizi Baik</td>
-                    </tr>
-                    <tr>
-                        <td class="p-2 text-left border-t border-b border-slate-600">05 Januari 2024</td>
-                        <td class="p-2 text-left border-t border-b border-slate-600">Gizi Cukup</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h3 class="text-xl text-left border-b-4 border-primary3 pb-3 font-bold">Grafik Perkembangan Status Gizi</h3>
+            <canvas id="myChart"></canvas>
         </div>
 
         <div class="max-[420px]:hidden">
@@ -48,27 +29,8 @@
         </div>
 
         <div>
-        <table class="table-auto">
-                <thead>
-                    <tr>
-                        <th class="py-5 text-xl text-left border-b-4 border-primary3" colspan="2">Riwayat Cek PMS dalam 5 cek terakhir</th>
-                    </tr>
-                    <tr>
-                        <th class="p-3 text-left border-b-2 border-t border-slate-600">Tanggal Periksa</th>
-                        <th class="p-3 text-left border-b-2 border-t border-slate-600">Hasil Cek Pre-Metabolic Syndrome</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="p-2 text-left border-t border-b border-slate-600">06 Januari 2024</td>
-                        <td class="p-2 text-left border-t border-b border-slate-600">Tidak Pre-Metabolic Syndrome</td>
-                    </tr>
-                    <tr>
-                        <td class="p-2 text-left border-t border-b border-slate-600">05 Januari 2024</td>
-                        <td class="p-2 text-left border-t border-b border-slate-600">Pre-Metabolic Syndrome</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h3 class="text-xl text-left border-b-4 border-primary3 pb-3 font-bold">Grafik Perkembangan Pre-Metabolic Syndrome</h3>
+            <canvas id="myChart2"></canvas>
         </div>
     </div>
 
@@ -115,3 +77,39 @@
         </script>
     @endsection
 @endif
+
+@section('scripts')
+    <script>
+        const xValues = ["19 Januari 2024", "20 Januari 2024", "21 Januari 2024", "22 Januari 2024", "23 Januari 2024"];
+        const yValues = [2, 3, 4, 3, 4];
+
+        new Chart("myChart", {
+            type: "line",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    backgroundColor:"rgba(0,0,255,1.0)",
+                    borderColor: "rgba(0,0,255,0.1)",
+                    data: yValues
+                }]
+            }
+        });
+    </script>
+
+<script>
+        const xValues2 = ["19 Januari 2024", "20 Januari 2024", "21 Januari 2024", "22 Januari 2024", "23 Januari 2024"];
+        const yValues2 = [1, 2, 2, 1, 2];
+
+        new Chart("myChart2", {
+            type: "line",
+            data: {
+                labels: xValues2,
+                datasets: [{
+                    backgroundColor:"rgba(0,0,255,1.0)",
+                    borderColor: "rgba(0,0,255,0.1)",
+                    data: yValues2
+                }]
+            }
+        });
+    </script>
+@endsection
