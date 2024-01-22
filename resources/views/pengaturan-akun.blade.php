@@ -2,8 +2,6 @@
 
 @section('title', 'NUtrimet | Pengaturan Akun')
 
-
-
 @section('contents')
 <body class="bg-cover bg-center bg-no-repeat" style="background-image: url('/img/bg-red-dots.png');">
     <div class="mx-auto my-16 max-w-lg p-7 bg-white border border-gray-400 rounded-lg shadow hover:bg-gray-100 opacity-80">
@@ -12,11 +10,14 @@
             <h2 class="text-xl text-center font-bold mb-3">Pengaturan Akun</h2>
             <h3 class="text-sm text-center mb-5">Silahkan isi form dibawah ini untuk merubah pengaturan akun</h3>
 
-            <img src="{{ auth()->user()->gambar }}" alt="User Icon" class="w-20 mx-auto">
+            <img src="{{ asset('/storage/profile_picture/' . auth()->user()->gambar) }}" alt="User Icon" class="w-20 mx-auto">
 
             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
-            <input class="w-full p-3 my-5 border border-black rounded-lg cursor-pointer" type="file" name="profile_picture" id="profile_picture">
+            <input class="w-full p-3 mt-5 mb-3 border border-black rounded-lg cursor-pointer @error('profile_picture') border-primary3 @enderror" type="file" name="profile_picture" id="profile_picture">
+            @error('profile_picture')
+                <p class="text-primary3 text-xs">{{ $message }}</p>
+            @enderror
 
             <div class="mb-3">
                 <label for="nama_lengkap" class="block mb-2 text-base font-medium text-gray-900">Nama Lengkap</label>
