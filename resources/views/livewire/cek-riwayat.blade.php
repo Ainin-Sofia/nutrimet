@@ -32,8 +32,8 @@
                 @foreach($results as $res)
                     <tr>
                         <td class="border border-black p-5">{{ date_format(new DateTime($res->tanggal_cek), "d F Y") }}</td>
-                        <td class="border border-black p-5">@if($kategori == "cek-status-gizi") Status Gizi: @else Pre-Metabolic Syndrome @endif <span class="font-medium">{{ $res->hasil_status_gizi }}</span></td>
-                        <td class="border border-black p-5">
+                        <td class="border border-black p-5">@if($kategori == "cek-status-gizi") Status Gizi: @else Pre-Metabolic Syndrome: @endif <span class="font-medium">@if($kategori == "cek-status-gizi") {{ $res->hasil_status_gizi }} @else {{ $res->hasil_pms }} @endif</span></td>
+                        <td class="border border-black p-5 w-1/4">
                             <a href="#" class="bg-yellow-600 px-3 py-2 mx-1 rounded-lg text-white text-xs">Detail</a>
                             <a href="#" class="bg-primary3 px-3 py-2 mx-1 rounded-lg text-white text-xs">Hapus</a>
                             <a href="#" class="bg-blue-950 px-3 py-2 mx-1 rounded-lg text-white text-xs">Cetak</a>
