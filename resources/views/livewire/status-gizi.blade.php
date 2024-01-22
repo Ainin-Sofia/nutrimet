@@ -37,11 +37,11 @@
                         </tr>
                         <tr>
                             <td  class="pr-10 py-1 text-xl">Tinggi Badan:</td>
-                            <th class="text-xl">@if(session('afterCek')) {{ $cek_result->tinggi_badan }} @endif</th>
+                            <th class="text-xl">@if(session('afterCek')) {{ $cek_result->tinggi_badan }} cm @endif</th>
                         </tr>
                         <tr>
                             <td  class="pr-10 py-1 text-xl">Berat Badan:</td>
-                            <th class="text-xl">@if(session('afterCek')) {{ $cek_result->berat_badan }} @endif</th>
+                            <th class="text-xl">@if(session('afterCek')) {{ $cek_result->berat_badan }} kg @endif</th>
                         </tr>
                     </table>
                     <h2 class="text-xl font-bold mb-5">Status Gizi Kamu: </h2>

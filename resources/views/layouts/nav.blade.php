@@ -6,7 +6,7 @@
         <div class="flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">
             <button type="button" data-dropdown-toggle="language-dropdown-menu" class="inline-flex items-center font-bold justify-center px-4 py-2 text-sm rounded-lg cursor-pointer hover:bg-gray-100" onclick="toggleUser();">
                 {{ auth()->user()->nama }}
-                <img src="{{ asset('/storage/profile_picture/' . auth()->user()->gambar) }}" alt="User Icon" class="w-10 mx-3">
+                <img src="{{ asset('/storage/profile_picture/' . auth()->user()->gambar) }}" alt="User Icon" class="w-10 mx-3 rounded-full">
             </button>
             <!-- Dropdown -->
             <div class="z-50 hidden absolute mt-32 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow" id="user-menu">
