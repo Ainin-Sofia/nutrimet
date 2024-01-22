@@ -41,4 +41,8 @@ class HomeController extends Controller
 
             return redirect()->back();
     }
+
+    function cekDetail(Request $request, $id) {
+        return view('detailCek');
+    }
 }

@@ -57,7 +57,7 @@ class AuthController extends Controller
             $user->jenis_kelamin = $request->jenis_kelamin;
             $user->tanggal_lahir = $request->tanggal_lahir;
             $user->password = $request->password;
-            $user->gambar = "/img/defaultPP.png";
+            $user->gambar = "";
  
             $user->save();
 

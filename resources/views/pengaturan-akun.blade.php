@@ -10,7 +10,7 @@
             <h2 class="text-xl text-center font-bold mb-3">Pengaturan Akun</h2>
             <h3 class="text-sm text-center mb-5">Silahkan isi form dibawah ini untuk merubah pengaturan akun</h3>
 
-            <img src="{{ asset('/storage/profile_picture/' . auth()->user()->gambar) }}" alt="User Icon" class="w-20 mx-auto">
+            <img src="@if(auth()->user()->gambar != '') {{ asset('/storage/profile_picture/' . auth()->user()->gambar) }} @else {{ asset('/img/defaultPP.png') }} @endif" alt="User Icon" class="w-20 mx-auto">
 
             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 

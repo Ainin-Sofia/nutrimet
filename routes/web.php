@@ -43,3 +43,5 @@ Route::get('/pengaturan_akun', [HomeController::class, 'pengaturanAkun'])->middl
 Route::post('/pengaturan_akun', [HomeController::class, 'storeAkun'])->middleware('auth');
 
 Route::get('/cek_riwayat', CekRiwayat::class)->middleware('auth');
+
+Route::get('/cek_riwayat/status_gizi/{id}', [HomeController::class, 'cekDetail'])->middleware('auth');
