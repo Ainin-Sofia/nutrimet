@@ -16,12 +16,13 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->date('tanggal_cek');
-            $table->integer('tekanan_darah');
+            $table->integer('sistole');
+            $table->integer('diastole');
             $table->integer('lingkar_pinggang');
             $table->string('gula_darah');
             $table->integer('hdl');
             $table->integer('trigliserida');
-            $table->string('hasil_status_pms');
+            $table->string('hasil_pms');
             $table->timestamps();
         });
     }
